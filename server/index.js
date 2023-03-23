@@ -25,10 +25,10 @@ app.use("/tour", tourRouter);
 
 
 
-const PORT = process.env.PORT || 5000; 
+const port = process.env.PORT || 5000; 
 
 mongoose.connect(process.env.MONGODB_URL).then(() => {
-    app.listen(PORT, () => {
+    app.listen(port, () => {
         console.log(`Server is running on port ${port}`);
         console.log("Mogodb is connected");
     })
