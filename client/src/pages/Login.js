@@ -29,6 +29,13 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  
+
+  const dotEnv = process.env.NODE_ENV !== "production";
+  const clientId = dotEnv
+    ? "193073588695-4lcq0jniknotep01innimpq8md2tqo5n.apps.googleusercontent.com"
+    : "193073588695-7emr9v3ih340g11bq1e1djq5u383hpuo.apps.googleusercontent.com";
+
   useEffect(() => {
     error && toast.error(error);
   }, [error]);
@@ -46,12 +53,12 @@ const Login = () => {
   };
 
   const googleSuccess = (res) => {
-     const email = res?.profileObj?.email;
-     const name = res?.profileObj?.name;
-     const token = res?.profileObj?.token;
-     const googleId = res?.profileObj?.googleId;
-     const result = {email, name, token, googleId};
-     dispatch(googleSignIn({ result, navigate, toast}))
+    const email = res?.profileObj?.email;
+    const name = res?.profileObj?.name;
+    const token = res?.profileObj?.token;
+    const googleId = res?.profileObj?.googleId;
+    const result = { email, name, token, googleId };
+    dispatch(googleSignIn({ result, navigate, toast }));
   };
   const googleFailure = (error) => {
     toast.error(error);
@@ -115,7 +122,7 @@ const Login = () => {
 
           <br />
           <GoogleLogin
-            clientId="193073588695-4lcq0jniknotep01innimpq8md2tqo5n.apps.googleusercontent.com"
+            clientId= {clientId}
             render={(renderProps) => (
               <MDBBtn
                 style={{ width: "100%" }}
@@ -123,7 +130,7 @@ const Login = () => {
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
               >
-              <FontAwesomeIcon icon={faGoogle} className="me-2" />
+                <FontAwesomeIcon icon={faGoogle} className="me-2" />
                 Google Sign In
               </MDBBtn>
             )}

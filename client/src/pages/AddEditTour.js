@@ -22,7 +22,7 @@ const initialState = {
 const AddEditTour = () => {
   const [tourData, setTourData] = useState(initialState);
   const [tagErrMsg, setTagErrMsg] = useState(null);
-  const { error, loading, userTours } = useSelector((state) => ({
+  const { error, userTours } = useSelector((state) => ({
     ...state.tour,
   }));
   const { user } = useSelector((state) => ({ ...state.auth }));
@@ -37,6 +37,7 @@ const AddEditTour = () => {
       console.log(singleTour);
       setTourData({ ...singleTour });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   useEffect(() => {

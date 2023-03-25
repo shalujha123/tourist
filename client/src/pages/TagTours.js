@@ -9,7 +9,6 @@ import {
   MDBRow,
   MDBCol,
   MDBBtn,
-  MDBBadge,
 } from "mdb-react-ui-kit";
 import { useParams, useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
@@ -27,6 +26,7 @@ const TagTours = () => {
     if (tag) {
       dispatch(getToursByTag(tag));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tag]);
 
   if (loading) {

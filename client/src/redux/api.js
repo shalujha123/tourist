@@ -1,6 +1,12 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000" });
+const dotEnv = process.env.NODE_ENV !== "production";
+
+const { REACT_APP_DEV_API, REACT_APP_PROD_API } = process.env;
+
+const API = axios.create({
+  baseURL: `${dotEnv ? REACT_APP_DEV_API : REACT_APP_PROD_API}`,
+});
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
@@ -24,7 +30,6 @@ export const updateTour = (updatedTourData, id) =>
 export const getToursByUser = (userId) => API.get(`/tour/userTours/${userId}`);
 export const getToursBySearch = (searchQuery) =>
   API.get(`/tour/search?searchQuery=${searchQuery}`);
-
 
 export const getTagTours = (tag) => API.get(`/tour/tag/${tag}`);
 export const getRelatedTours = (tags) => API.post(`/tour/relatedTours`, tags);
