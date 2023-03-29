@@ -78,7 +78,7 @@ const Dashboard = () => {
                     className="rounded"
                     src={item.imageFile}
                     alt={item.title}
-                    style={{ size: "cover", width: "100%" }}
+                    style={{ maxWidth: "100%", height: "100%", backgroundSize: "cover" }}
                     fluid
                   />
                 </MDBCol>

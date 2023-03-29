@@ -29,6 +29,7 @@ const RelatedTours = ({ relatedTours, tourId }) => {
                         src={item.imageFile}
                         alt={item.title}
                         position="top"
+                        style={{ maxWidth: "100%", height: "100%", backgroundSize: "cover" }}
                       />
                     </Link>
                     <span className="text-start tag-card">
